@@ -1,0 +1,97 @@
+
+\documentclass{article} % tipologia di documento
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage{ragged2e}
+\usepackage[left=25mm, right=25mm, top=15mm]{geometry}
+\geometry{a4paper}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{paralist}
+\usepackage{subfig} 
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{braket}
+\usepackage{gensymb}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{csquotes}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{babel}
+\usepackage{caption}
+\usepackage{nccmath}
+\captionsetup{font=small}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+\usepackage{sectsty}
+\usepackage[nottoc,notlof,notlot]{tocbibind}
+\usepackage[titles,subfigure]{tocloft}
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape}
+
+
+
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\g}{\text{g}}
+\newcommand{\m}{\text{m}}
+\newcommand{\cm}{\text{cm}}
+\newcommand{\mm}{\text{mm}}
+\newcommand{\s}{\text{s}}
+\newcommand{\N}{\text{N}}
+\newcommand{\Hz}{\text{Hz}}
+
+\newcommand{\virgolette}[1]{``\text{#1}"}
+\newcommand{\tildetext}{\raise.17ex\hbox{$\scriptstyle\mathtt{\sim}$}}
+
+
+\renewcommand{\arraystretch}{1.2}
+
+\addto\captionsenglish{\renewcommand{\figurename}{Fig.}}
+\addto\captionsenglish{\renewcommand{\tablename}{Tab.}}
+
+\DeclareCaptionLabelFormat{andtable}{#1~#2  \&  \tablename~\thetable}
+\title{Integrazione secondo Lebesgue} % titolo del documento
+\author{Lucrezia Bioni} % autore del documento
+\date{} % data: se è vuoto non mette nulla :)
+
+\begin{document} % inizia il documento
+    \maketitle
+
+    \subsubsection*{Funzione misurabile}
+    Sia $f:\mathbb{R} ^n \to \mathbb{R} $, f continua $\implies$ $f$ è misurabile  
+
+    \subsubsection*{Funzione integrabile}
+    Diciamo che $f$ è integrabile quando $\int_{E}^{ }f^+\,dx$ e $\int_{E}^{ }f^-\,dx$ sono finiti
+    $$ f \in \mathcal{L} (E) \, \, \, \, \, \,  \Longleftrightarrow \, \, \, \, \, \,  f \in \mathfrak{M} (E) \,\, \, \,  \text{e} \,\, \, \,  \int_{E}^{ }|f|\,dx < +\infty  $$
+
+
+    \subsubsection*{Teorema di convergenza monotona}
+    Sia $ \{ f_k \}_{k\in\mathbb{N}}: E \to \overline{\mathbb{R}}, \,\,\, f: E \to \overline{\mathbb{R}}, \,\,\, E \in \mathcal{M} (\mathbb{R} ^n) , \,\,\, f_k \text{ e } f \in \mathfrak{M}(\mathbb{R} ^n) $. \\ Supponiamo che $\exists \, g: E \to \overline{\mathbb{R}}, \,\,\,\,\, g \in \mathcal{L} (E) $, \,\,\,\, con $g(x)\leq f_k(x) \, \,\,\, \forall x \in E \, \,\,\,\, \forall k \in \mathbb{N} $. \\ Supponiamo poi che $\forall x \in E$ $f_k(x)\nearrow f(x)$ (convergenza monotona puntuale)
+    $$ \implies f_k \, \, \forall k \,\,\, \text{e} \, f \,\,\, \text{hanno integrale} \,\,\,\, \text{e} \,\,\,\, \lim_{k \to \infty} \int_{E}^{}f_k \,dx = \int_{E}^{}f(x) \,dx $$
+
+    \subsubsection*{Lemma di Fatou}
+    Sia $ \ f_k: E \subseteq \mathcal{M} (\mathbb{R} ^n) \to \overline{\mathbb{R}} , \,\,\,\, f_k \in \mathfrak{M} (E) \,\, \forall k$. \\ 1. Supponiamo che $\exists \, g \in \mathcal{L} (E) \,\, , g(x) \leq f_k(x) \,\, \forall x $
+    $$ \implies \int_{E}^{}   \lim_{k \to \infty} \text{inf }f_k \,dx  \leq  \lim_{k \to \infty} \text{inf }\int_{E}^{}f_k$$
+    2. Supponiamo che $\exists \, G \in \mathcal{L} (E) \,\, , f_k(x) \leq G(x) \,\, \forall x $
+    $$ \implies \int_{E}^{}   \lim_{k \to \infty} \text{sup }f_k \,dx  \geq  \lim_{k \to \infty} \text{sup} \int_{E}^{}f_k$$
+  
+
+    \subsubsection*{Teorema di convergenza dominata}
+    Sia $ \ f_k: E \subseteq \mathcal{M} (\mathbb{R} ^n) \to \overline{\mathbb{R}} , \,\,\,\, f_k \in \mathfrak{M} (E) \,\, \forall k$. Supponiamo che \\ 1. $\exists \, f: E \to \overline{\mathbb{R}} $, con $\lim_{k \to \infty} f_k(x) $ $= f(x)$ $\forall x \in E$ \\ 2. $\exists \, g: E \to \overline{\mathbb{R}} $, $g \in \mathcal{L} (E)$ \,\, con $|f_k(x)| \leq g(x) \,\,\,\,\, \forall x \in E \,\,\,\,\,\, \forall k$
+    $$ \implies \lim_{k \to \infty} \int_{E}^{}f_k \,dx = \int_{E}^{}f(x) \,dx $$
+  
+
+\end{document} % fine il documento: non necessario perché lo farà automaticamente
