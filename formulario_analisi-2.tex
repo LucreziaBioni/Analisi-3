@@ -1,0 +1,94 @@
+% chktex-file 2
+% chktex-file 8
+% chktex-file 12
+% chktex-file 13
+% chktex-file 18
+% chktex-file 24
+% chktex-file 26
+% chktex-file 35
+% chktex-file 44
+% chktex-file 45
+
+\documentclass[]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage[left=15mm, right=15mm, top=15mm, bottom=15mm] {geometry}
+\geometry{a4paper}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{braket}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Nzero}{\mathbb{N}_0}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Zplus}{\mathbb{Z}^+}
+\newcommand{\Zminus}{\mathbb{Z}^-}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Qplus}{\mathbb{Q}^+}
+\newcommand{\Qminus}{\mathbb{Q}^-}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rplus}{\mathbb{R}^+}
+\newcommand{\Rminus}{\mathbb{R}^-}
+\newcommand{\Rbar}{\overline{\mathbb{R}}}
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\Y}{\mathcal{Y}}
+\newcommand{\B}{\mathfrak{B}}
+
+\newcommand{\vecx}{\underline{x}}
+\newcommand{\vecy}{\underline{y}}
+\newcommand{\vecz}{\underline{z}}
+\newcommand{\veczero}{\underline{0}}
+\newcommand{\vecp}{\underline{p}}
+
+\renewcommand{\d}{\mathfrak{d}}
+
+\newcommand{\foralln}{\forall n\in\N}
+\newcommand{\ra}{\Rightarrow}
+\newcommand{\defarr}{\,\overset{\mathrm{def}}{\Longleftrightarrow}\,}
+\newcommand{\defeq}{\overset{\mathrm{def}}{=\joinrel=}}
+\newcommand{\img}{\mathrm{Im}}
+\newcommand{\graf}{\mathrm{graf}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\inner}[2]{\left\langle#1,#2\right\rangle}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\dist}[2]{\d\left(#1,#2\right)}
+\newcommand{\ext}{\mathrm{ext}}
+\newcommand{\diam}{\mathrm{diam}}
+
+\newcommand{\csch}[1]{\text{csch}\,#1}
+\newcommand{\sech}[1]{\text{sech}\,#1}
+\newcommand{\arcsinh}[1]{\text{arcsinh}\,#1}
+\newcommand{\arccosh}[1]{\text{arccosh}\,#1}
+\newcommand{\arccsch}[1]{\text{arccsch}\,#1}
+\newcommand{\arcsech}[1]{\text{arcsech}\,#1}
+\newcommand{\arctanh}[1]{\text{arctanh}\,#1}
+\newcommand{\arccoth}[1]{\text{arccoth}\,#1}
+
+\linespread{1.25}
+
+\begin{document}
+
+    \section*{Hyperbolic Functions}
+
+        \begin{align*}
+            \sinh{x} &= \frac{e^{x} - e^{x}}{2} \quad \R\rightarrow\R & \csch{x} &= \frac{2}{e^{x} - e^{x}} \quad \R-\{0\}\rightarrow\R-\{0\} \\
+            \cosh{x} &= \frac{e^{x} + e^{x}}{2} \quad \R\rightarrow\left(1, +\infty\right) & \sech{x} &= \frac{2}{e^{x} + e^{x}} \quad \R\rightarrow\left(0, 1\right) \\
+            \tanh{x} &= \frac{e^{2x} - 1}{e^{2x} + 1} \quad \R\rightarrow\left(-1, 1\right) & \coth{x} &= \frac{e^{2x} + 1}{e^{2x} - 1} \quad \R-\{0\}\rightarrow\left(-\infty, -1\right)\cup\left(1, +\infty\right)
+        \end{align*}
+
+        \begin{align*}
+            \arcsinh{x} &= \ln{\left(x + \sqrt{x^2 + 1}\right)} \quad \R\rightarrow\R & \arccsch{x} &= \ln{\left(\frac{1 \pm \sqrt{1 + x^2}}{x}\right)} \quad \R-\{0\}\rightarrow\R-\{0\} \\
+            \arccosh{x} &= \ln{\left(x + \sqrt{x^2 - 1}\right)} \quad \left[1, +\infty\right)\rightarrow\left[0, +\infty\right) & \arcsech{x} &= \ln{\left(\frac{1 + \sqrt{1 - x^2}}{x}\right)} \quad \left(0, 1\right]\rightarrow\left[0, +\infty\right) \\
+            \arctanh{x} &= \frac{1}{2}\ln{\left(\frac{1 + x}{1 - x}\right)} \quad \left(-1, 1\right)\rightarrow\R & \arccoth{x} &= \frac{1}{2}\ln{\left(\frac{x + 1}{x - 1}\right)} \quad \left(-\infty, -1\right)\cup\left(1, +\infty\right)\rightarrow\R-\{0\}
+        \end{align*}
+
+\end{document}
