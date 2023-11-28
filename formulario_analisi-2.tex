@@ -64,6 +64,10 @@
 \newcommand{\ext}{\mathrm{ext}}
 \newcommand{\diam}{\mathrm{diam}}
 
+\newcommand{\arccsc}[1]{\text{arccsc}\,#1}
+\newcommand{\arcsec}[1]{\text{arcsec}\,#1}
+\newcommand{\arccot}[1]{\text{arccot}\,#1}
+
 \newcommand{\csch}[1]{\text{csch}\,#1}
 \newcommand{\sech}[1]{\text{sech}\,#1}
 \newcommand{\arcsinh}[1]{\text{arcsinh}\,#1}
@@ -72,6 +76,8 @@
 \newcommand{\arcsech}[1]{\text{arcsech}\,#1}
 \newcommand{\arctanh}[1]{\text{arctanh}\,#1}
 \newcommand{\arccoth}[1]{\text{arccoth}\,#1}
+
+\newcommand{\der}{\frac{d}{dx}\,}
 
 \linespread{1.25}
 
@@ -89,6 +95,36 @@
             \arcsinh{x} &= \ln{\left(x + \sqrt{x^2 + 1}\right)} \quad \R\rightarrow\R & \arccsch{x} &= \ln{\left(\frac{1 \pm \sqrt{1 + x^2}}{x}\right)} \quad \R-\{0\}\rightarrow\R-\{0\} \\
             \arccosh{x} &= \ln{\left(x + \sqrt{x^2 - 1}\right)} \quad \left[1, +\infty\right)\rightarrow\left[0, +\infty\right) & \arcsech{x} &= \ln{\left(\frac{1 + \sqrt{1 - x^2}}{x}\right)} \quad \left(0, 1\right]\rightarrow\left[0, +\infty\right) \\
             \arctanh{x} &= \frac{1}{2}\ln{\left(\frac{1 + x}{1 - x}\right)} \quad \left(-1, 1\right)\rightarrow\R & \arccoth{x} &= \frac{1}{2}\ln{\left(\frac{x + 1}{x - 1}\right)} \quad \left(-\infty, -1\right)\cup\left(1, +\infty\right)\rightarrow\R-\{0\}
+        \end{align*}
+    
+    \section*{Derivaives}
+        
+        \begin{align*}
+            \der x^{\alpha} &= \alpha x^{\alpha - 1} & \der\alpha^x &= \alpha^x \ln{\alpha} & \der\log_{\alpha}{x} &= \frac{1}{x\ln{\alpha}} \\
+            \der\sin{x} &= \cos{x} & \der\cos{x} &= -\sin{x} & \der\tan{x} &= \sec^2{x} \\
+            \der\csc{x} &= -\csc{x}\cot{x} & \der\sec{x} &= \sec{x}\tan{x} & \der\cot{x} &= -\csc^2{x} \\
+            \der\arcsin{x} &= \frac{1}{\sqrt{1 - x^2}} & \der\arccos{x} &= -\frac{1}{\sqrt{1 - x^2}} & \der\arctan{x} &= \frac{1}{1+x^2} \\
+            \der\arccsc{x} &= -\frac{1}{\abs{x}\sqrt{1 - x^2}} & \der\arcsec{x} &= \frac{1}{\abs{x}\sqrt{1 - x^2}} & \der\arccot{x} &= -\frac{1}{1 + x^2}
+        \end{align*}
+    
+    \section*{Taylor Series}
+        
+        \begin{align*}
+            \left(1 + x\right)^\alpha &= \sum_{n = 0}^{\infty} \binom{\alpha}{n}x^n = 1 + \alpha x + \frac{\alpha\left(\alpha - 1\right)}{2} x^2 + \frac{\alpha\left(\alpha - 1\right)\left(\alpha - 2\right)}{6} x^3 + \frac{\alpha\left(\alpha - 1\right)\left(\alpha - 2\right)\left(\alpha - 3\right)}{24} x^4 + \ldots \quad \abs{x} < 1 \\
+            e^x &= \sum_{n = 0}^{\infty} \frac{x^n}{n!} = 1 + x + \frac{x^2}{2} + \frac{x^3}{6} + \frac{x^4}{24} + \frac{x^5}{120} + \frac{x^6}{720} + \ldots \quad \abs{x} < \infty \\
+            \ln{\left(1 + x\right)} &= \sum_{n = 1}^{\infty} \left(-1\right)^{n - 1} \frac{x^n}{n} = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \frac{x^5}{5} - \frac{x^6}{6} + \ldots \quad \abs{x} \le 1 \\
+            %trig
+            \sin{x} &= \sum_{n = 0}^{\infty} \left(-1\right)^n \frac{x^{2n + 1}}{\left(2n + 1\right)!} = x - \frac{x^3}{6} + \frac{x^5}{120} + \ldots \quad \abs{x} < \infty \\
+            \cos{x} &= \sum_{n = 0}^{\infty} \left(-1\right)^n \frac{x^{2n}}{\left(2n\right)!} = 1 - \frac{x^2}{2} + \frac{x^4}{24} - \frac{x^6}{720} + \ldots \quad \abs{x} < \infty \\
+            \tan{x} &= x - \frac{x^3}{3} + \frac{2x^5}{15} - \frac{17x^7}{315} + \frac{62x^9}{2835} - \frac{1382x^{11}}{155925} + \ldots \quad \abs{x} < \frac{\pi}{2} \\
+            \arcsin{x} &= \sum_{n = 0}^{\infty} \frac{\left(2n\right)!}{2^{2n} \left(n!\right)^2 \left(2n + 1\right)}x^{2n + 1} = x + \frac{x^3}{6} + \frac{3x^5}{40} + \frac{5x^7}{112} + \ldots = \frac{\pi}{2} - \arccos{x} \quad \abs{x} \le 1 \\
+            \arctan{x} &= \sum_{n = 0}^{\infty} \left(-1\right)^n \frac{x^{2n + 1}}{2n + 1} = x - \frac{x^3}{3} + \frac{x^5}{5} - \frac{x^7}{7} + \ldots \quad \abs{x} \le 1 \\
+            %hyp
+            \sinh{x} &= \sum_{n = 0}^{\infty} \frac{x^{2n + 1}}{\left(2n + 1\right)!} = x + \frac{x^3}{6} + \frac{x^5}{120} + \ldots \quad \abs{x} < \infty \\
+            \cosh{x} &= \sum_{n = 0}^{\infty} \frac{x^{2n}}{\left(2n\right)!} = 1 + \frac{x^2}{2} + \frac{x^4}{24} + \frac{x^6}{720} + \ldots \quad \abs{x} < \infty \\
+            \tanh{x} &= x - \frac{x^3}{3} + \frac{2x^5}{15} - \frac{17x^7}{315} + \frac{62x^9}{2835} - \frac{1382x^{11}}{155925} + \ldots \quad \abs{x} < \frac{\pi}{2} \\
+            \arcsin{x} &= \sum_{n = 0}^{\infty} \left(-1\right)^n \frac{\left(2n\right)!}{2^{2n} \left(n!\right)^2 \left(2n + 1\right)}x^{2n + 1} = x - \frac{x^3}{6} + \frac{3x^5}{40} - \frac{5x^7}{112} + \ldots \quad \abs{x} \le 1 \\
+            \arctan{x} &= \sum_{n = 0}^{\infty} \frac{x^{2n + 1}}{2n + 1} = x + \frac{x^3}{3} + \frac{x^5}{5} + \frac{x^7}{7} + \ldots \quad \abs{x} \le 1 \\
         \end{align*}
 
 \end{document}
