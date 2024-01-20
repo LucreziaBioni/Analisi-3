@@ -3,6 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 
+
 \usepackage{ragged2e}
 \usepackage[left=25mm, right=25mm, top=15mm]{geometry}
 \geometry{a4paper}
@@ -69,15 +70,50 @@
 \begin{document} % inizia il documento
     \maketitle
 
-    \subsection*{Lavoro del campo lungo una curva}
+    \subsection*{Def: Lavoro del campo lungo una curva}
     Dato un campo vettoriale $\mathcal{F} $ di classe $ \mathcal{C} ^0 $ su $\Omega$ aperto di $ \mathbb{R} ^n $
     e data una curva regolare a tratti $\varphi:[a,b]\to \Omega $, si chiama lavoro del campo lungo la curva data il numero:
     $$ \int _\gamma \langle \mathcal{F} , \tau \rangle \  ds := \int_{a}^{b} \sum_{j = 1}^{n}  \mathcal{F}_j(\varphi (t)) \cdot \varphi_j ' (t) \,dt  $$
 
-    \subsection*{Integrale di una forma differenziale lungo una curva}
+    \subsection*{Def: Integrale di una forma differenziale lungo una curva}
     Data $\omega $ forma differenziale su $\Omega $ di classe $ \mathcal{C} ^0 $, $ \omega = \sum_{j = 1}^{n} a_j dx_j $
     e data una curva regolare a tratti $\varphi:[a,b]\to \Omega $, si chiama integrale di $\omega$ lungo $\varphi$ la quantità
     $$ \int _\gamma  \ \omega \ = \ \int _\gamma \ \sum_{j = 1}^{n} \ a_j \ dx_j\ :=\  \int_{a}^{b} \ \sum_{j = 1}^{n} \ a_j ( \varphi (t) ) \ \varphi_j ' (t) \,\ \ dt \ = \ \int _\gamma \ \langle \mathcal{F} _\omega , \tau \rangle \  ds  $$
 
+    \subsection*{Thm: Teorema di caratterizzazione}
+    Data $\omega$ forma differenziale su $\Omega$ (aperto di $\mathcal{R}^n$ ) di classe $\mathcal{C} ^n$. \\
+    I seguenti fatti sono equivalenti: \\
+    $\bullet \, \omega$ è esatta in $\Omega$ \\
+    $\bullet \int_{\gamma} \omega = 0 \forall$ curva $\gamma$ regolare (a tratti) e chiusa in $\Omega$ \\
+    $\bullet$ $\forall p,q$ in $\Omega$, comunque si prenda una curva regolare (a tratti) in $\Omega$ da p a q e orientata (da p a q) si ha che $ \int_{\text{curva da p a q}} \omega$ dipende solo da p e q, ma non dipende dalla curva $\gamma$
+
+
+    \subsection*{Def: Forma differenziale chiusa}
+    Sia $\omega = a_1 dx_1 + ... + a_n dx_n$ una forma differenziale di classe $\mathcal{C} ^1$ su $\Omega$ aperto di $\mathbb{R}^n$, $\omega$ è detta chiusa \\
+    $$ \frac{\partial a_i}{ \partial x_j} = \frac{\partial a_j}{\partial x_i} \,\,\, \forall i,j $$
+
+    \subsection*{Def: Campo vettoriale non rotazionale}
+    Sia $F = (F_1,...,F_n)$ un campo vettoriale di classe $\mathcal{C} ^1$ su $\Omega$, aperto di $\mathbb{R}^n$, F è detto non rotazionale (o irrotazionale) quando si verifica:
+    $$\frac{\partial F_i}{ \partial x_j} = \frac{\partial F_j}{\partial x_i} \,\,\, \forall i,j$$
+
+    \subsection*{Proposizione}
+    Sia $\omega$ una forma differenziale di classe $\mathcal{C}^1$ su $\Omega$ aperto di $\mathbb{R}^n$.
+    Se $\omega$ è esatta in $\Omega$ $\implies$ $\omega$ è chiusa in $\Omega$.
+
+    \subsection*{Thm: Lemma di Poincaré}
+    Sia $\omega$ una forma differenziale di classe $\mathcal{C}^1$ su $\Omega$ aperto di $\mathbb{R}^n$. \\
+    Se $\Omega$ è stellato e $\omega$ è chiusa in $\Omega$ $\implies$ $\omega$ è esatto in $\Omega$.\\
+    Valido anche nel caso in cui $\Omega$ sia semplicemente connesso.
+
+    \subsection*{Def: Omotopia}
+    Siano $\phi_0, \phi_1:[0,1] \to \Omega \subseteq \mathbb{R}^n$. \\ Supponiamo che $\phi_0$ e $\phi_1$ siano curve con $\phi_0(0)=\phi_1(0)$ e $\phi_0(1)=\phi_1(1)$. \\ Le due curve $\phi_0$ e $\phi_1$ sono dette omotope quando esiste una mappa (mappa di omotopia) $\psi:[o,1] \times [0,1] \to \Omega$ continua globalmente e tale che: \\
+    $\bullet \, \psi(0,t)=\phi_0(t) \forall t$ \\
+    $\bullet \, \psi(s,0)=\phi_1(t) \forall t$ \\
+    $\bullet \, \psi(s,0)$ non dipende da s e $\psi(s,0)$ non dipende da s.
+
+    \subsection*{Thm: Teorema di invarianza omotopica}
+    Sia $\omega$ una forma differenziale su $\Omega$, aperto di $\mathbb{R}^n$, di classe $\mathcal{C}^1$. Supponiamo che $\omega$ sia chiusa in $\Omega$. \\
+    Siano $\phi_0$ e $\phi_1$ curve regolari a tratti da p a q in $\Omega$. \\
+    Se $\phi_0$ e $\phi_1$ sono omotope $\implies$ $\int_{\phi_0} \omega = \int_{\phi_1} \omega$
 
 \end{document} % fine il documento: non necessario perché lo farà automaticamente

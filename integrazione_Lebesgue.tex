@@ -70,28 +70,37 @@
 \begin{document} % inizia il documento
     \maketitle
 
-    \subsubsection*{Funzione misurabile}
+    \subsection*{Def: Funzione misurabile}
     Sia $f:\mathbb{R} ^n \to \mathbb{R} $, f continua $\implies$ $f$ è misurabile  
 
-    \subsubsection*{Funzione integrabile}
+    \subsection*{Def: Funzione integrabile}
     Diciamo che $f$ è integrabile quando $\int_{E}^{ }f^+\,dx$ e $\int_{E}^{ }f^-\,dx$ sono finiti
     $$ f \in \mathcal{L} (E) \, \, \, \, \, \,  \Longleftrightarrow \, \, \, \, \, \,  f \in \mathfrak{M} (E) \,\, \, \,  \text{e} \,\, \, \,  \int_{E}^{ }|f|\,dx < +\infty  $$
 
+    \subsection*{Thm: Condizione sufficiente di integrabilità}
+    $\bullet$ \, Se f è misurabile e limitata e $m(E) < + \infty$ $\implies f \in L(E)$ \\
+    $\bullet$ \, $f \in \mathcal{R} (I), I=[a,b] \implies f \in L(I)$ \\
+    $\bullet$ \, $f: I \to \mathbb{R}$, con I intervallo (non necessariamente compatto). Supponiamo che $f$ sia assolutamente integrabile secondo Riemann generalizzato in I $\implies f \in L(I)$
 
-    \subsubsection*{Teorema di convergenza monotona}
-    Sia $ \{ f_k \}_{k\in\mathbb{N}}: E \to \overline{\mathbb{R}}, \,\,\, f: E \to \overline{\mathbb{R}}, \,\,\, E \in \mathcal{M} (\mathbb{R} ^n) , \,\,\, f_k \text{ e } f \in \mathfrak{M}(\mathbb{R} ^n) $. \\ Supponiamo che $\exists \, g: E \to \overline{\mathbb{R}}, \,\,\,\,\, g \in \mathcal{L} (E) $, \,\,\,\, con $g(x)\leq f_k(x) \, \,\,\, \forall x \in E \, \,\,\,\, \forall k \in \mathbb{N} $. \\ Supponiamo poi che $\forall x \in E$ $f_k(x)\nearrow f(x)$ (convergenza monotona puntuale)
-    $$ \implies f_k \, \, \forall k \,\,\, \text{e} \, f \,\,\, \text{hanno integrale} \,\,\,\, \text{e} \,\,\,\, \lim_{k \to \infty} \int_{E}^{}f_k \,dx = \int_{E}^{}f(x) \,dx $$
+    \subsection*{Teorema di convergenza uniforme}
+    Sia $E \in \mathcal{M}(\mathbb{R}^n)$, con $m(E) < + \infty$. \\ Se $\{f_k\}_{k \in \mathbb{N}}: E \to \mathbb{R}, f_k \in L(E)$, $f:E \to \mathbb{R}$, e $f_k \to f$ uniformemente in E \\
+    Allora $f \in L(E)$ e, inoltre, $\lim_{k \to \infty} \int_E \left| f_k(x) - f(x) \right|dx=0$, così che $\lim_{k \to \infty} \int_E f_k$ esiste e vale $\int_E f$
 
-    \subsubsection*{Lemma di Fatou}
+
+    \subsection*{Teorema di convergenza monotona}
+    Sia $ \{ f_k \}_{k\in\mathbb{N}}: E \to \overline{\mathbb{R}}, \,\,\, f: E \to \overline{\mathbb{R}}, \,\,\, E \in \mathcal{M} (\mathbb{R} ^n) , \,\,\, f_k \text{ e } f \in \mathfrak{M}(\mathbb{R} ^n) $. \\ Supponiamo che $\exists \, g: E \to \overline{\mathbb{R}}, \,\,\,\,\, g \in \mathcal{L} (E) $, \,\,\,\, con $g(x)\leq f_k(x) \, \,\,\, \forall x \in E \, \,\,\,\, \forall k \in \mathbb{N} $. \\ Supponiamo poi che $\forall x \in E$ $f_k(x)\nearrow f(x)$ (convergenza monotona puntuale) \\
+    $ \implies f_k \, \, \forall k \,\,\, \text{e} \, f \,\,\, \text{hanno integrale} \,\,\,\, \text{e} \,\,\,\, \lim_{k \to \infty} \int_{E}^{}f_k \,dx = \int_{E}^{}f(x) \,dx $
+
+    \subsection*{Lemma di Fatou}
     Sia $ \ f_k: E \subseteq \mathcal{M} (\mathbb{R} ^n) \to \overline{\mathbb{R}} , \,\,\,\, f_k \in \mathfrak{M} (E) \,\, \forall k$. \\ 1. Supponiamo che $\exists \, g \in \mathcal{L} (E) \,\, , g(x) \leq f_k(x) \,\, \forall x $
-    $$ \implies \int_{E}^{}   \lim_{k \to \infty} \text{inf }f_k \,dx  \leq  \lim_{k \to \infty} \text{inf }\int_{E}^{}f_k$$
+    $ \implies \int_{E}^{}   \lim_{k \to \infty} \text{inf }f_k \,dx  \leq  \lim_{k \to \infty} \text{inf }\int_{E}^{}f_k$ \\
     2. Supponiamo che $\exists \, G \in \mathcal{L} (E) \,\, , f_k(x) \leq G(x) \,\, \forall x $
-    $$ \implies \int_{E}^{}   \lim_{k \to \infty} \text{sup }f_k \,dx  \geq  \lim_{k \to \infty} \text{sup} \int_{E}^{}f_k$$
+    $ \implies \int_{E}^{}   \lim_{k \to \infty} \text{sup }f_k \,dx  \geq  \lim_{k \to \infty} \text{sup} \int_{E}^{}f_k$
   
 
-    \subsubsection*{Teorema di convergenza dominata}
+    \subsection*{Teorema di convergenza dominata}
     Sia $ \ f_k: E \subseteq \mathcal{M} (\mathbb{R} ^n) \to \overline{\mathbb{R}} , \,\,\,\, f_k \in \mathfrak{M} (E) \,\, \forall k$. Supponiamo che \\ 1. $\exists \, f: E \to \overline{\mathbb{R}} $, con $\lim_{k \to \infty} f_k(x) $ $= f(x)$ $\forall x \in E$ \\ 2. $\exists \, g: E \to \overline{\mathbb{R}} $, $g \in \mathcal{L} (E)$ \,\, con $|f_k(x)| \leq g(x) \,\,\,\,\, \forall x \in E \,\,\,\,\,\, \forall k$
-    $$ \implies \lim_{k \to \infty} \int_{E}^{}f_k \,dx = \int_{E}^{}f(x) \,dx $$
+    $ \implies \lim_{k \to \infty} \int_{E}^{}f_k \,dx = \int_{E}^{}f(x) \,dx $
   
 
 \end{document} % fine il documento: non necessario perché lo farà automaticamente

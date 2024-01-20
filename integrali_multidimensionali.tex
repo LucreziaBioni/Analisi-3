@@ -1,0 +1,125 @@
+
+\documentclass{article} % tipologia di documento
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage{ragged2e}
+\usepackage[left=25mm, right=25mm, top=15mm]{geometry}
+\geometry{a4paper}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{paralist}
+\usepackage{subfig} 
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{braket}
+\usepackage{gensymb}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{csquotes}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{babel}
+\usepackage{caption}
+\usepackage{nccmath}
+\captionsetup{font=small}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+\usepackage{sectsty}
+\usepackage[nottoc,notlof,notlot]{tocbibind}
+\usepackage[titles,subfigure]{tocloft}
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape}
+
+
+
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\g}{\text{g}}
+\newcommand{\m}{\text{m}}
+\newcommand{\cm}{\text{cm}}
+\newcommand{\mm}{\text{mm}}
+\newcommand{\s}{\text{s}}
+\newcommand{\N}{\text{N}}
+\newcommand{\Hz}{\text{Hz}}
+
+\newcommand{\virgolette}[1]{``\text{#1}"}
+\newcommand{\tildetext}{\raise.17ex\hbox{$\scriptstyle\mathtt{\sim}$}}
+
+
+\renewcommand{\arraystretch}{1.2}
+
+\addto\captionsenglish{\renewcommand{\figurename}{Fig.}}
+\addto\captionsenglish{\renewcommand{\tablename}{Tab.}}
+
+\DeclareCaptionLabelFormat{andtable}{#1~#2  \&  \tablename~\thetable}
+\title{Integrali multidimensionali} % titolo del documento
+\author{Lucrezia Bioni} % autore del documento
+\date{} % data: se è vuoto non mette nulla :)
+
+\begin{document} % inizia il documento
+    \maketitle
+
+    \subsection*{Thm: Teorema di Fubini}
+    Sia $f:E \subseteq \mathbb{R}^n \to \mathbb{R}$, $E \in \mathcal{M}(\mathbb{R}^n), f \in L(E)$. Sia $\mathbb{R}^m \times \mathbb{R}^k = \mathbb{R}^n$ una decomposizione ortogonale. Allora: \\
+    $\bullet \,$ per $q.o. \, x$ la sezione $E(x) = \{y \in \mathbb{R}^k$ con $(x,y) \in E \}$ è misurabile in $\mathbb{R}^k$ \\
+    $\bullet \,$ per $q.o \, $ la funzione $x \mapsto \int_{E(x)} f(x,y)dy$ è ben definita, ed è in $L(\mathbb{R}^m)$ \\
+    $\bullet \,$ $\int_E f(x,y) dx dy = \int_{\mathbb{R}^m} \left[\int_{E(x)} f(x,y) dy\right] dx$
+  
+    \subsection*{Thm: Teorema di Tonelli}
+    Sia $f:E \subseteq \mathbb{R}^n \to \mathbb{R}$, $E \in \mathcal{M}(\mathbb{R}^n), f \in \mathcal{M}(E), f(x) \geq 0 \, \forall x$. Sia $\mathbb{R}^m \times \mathbb{R}^k = \mathbb{R}^n$ una decomposizione ortogonale. Allora: \\
+    $\bullet \,$ per $q.o. \, x$ la sezione $E(x) = \{y \in \mathbb{R}^k$ con $(x,y) \in E \}$ è misurabile in $\mathbb{R}^k$ \\
+    $\bullet \,$ per $q.o \, x$ la funzione $x \mapsto \int_{E(x)} f(x,y)dy$ è ben definita, ed è in $L(\mathbb{R}^m)$ \\
+    $\bullet \,$ $\int_E f(x,y) dx dy = \int_{\mathbb{R}^m} \left[\int_{E(x)} f(x,y) dy\right] dx$
+
+
+    \subsection*{Thm: Teorema per il cambiamento di coordinate}
+    Sia $\Phi:\Omega \subseteq \mathbb{R}^n \to \tilde{\Omega} $, con $\Omega$ e $\tilde{\Omega}$ aperti, un cambiamento di coordinate (dunque un diffeomorfismo). Sia $E \subseteq \tilde{\Omega}$, $E \in \mathcal{M}(\mathbb{R})$ $\implies \Phi^{-1}(E) \in \mathcal{M}(\mathbb{R}^n)$.\\
+    Sia $f:E \to \mathbb{R}, f \in L(E)$ oppure $f:E \to [0,+\infty]$ e misurabile. Allora:
+    $$\int_{\Phi^{-1}(E)}f(\Phi (x)) \left| \text{det} J \Phi (x) \right| dx = \int_E f(y) dy$$
+
+    \subsection*{Thm: Formule di Green}
+    Sia D un dominio regolare in $\mathbb{R}^2$. Sia $f: \Omega \subseteq \mathbb{R}^2 \to \mathbb{R}, D \subseteq \Omega, \Omega$ aperto, $f \in \mathcal{C}^1(\Omega)$, allora: \\
+    $$\int_D \frac{\partial f}{\partial x}(x,y) dx dy = \int_{\partial D^+} f(x,y) dy$$
+    $$\int_D \frac{\partial f}{\partial y}(x,y) dx dy = - \int_{\partial D^+} f(x,y) dx$$
+
+    \subsection*{Thm: Teorema della divergenza (Gauss) e di Stokes in $\mathbb{R}^2$}
+    Sia $D \subseteq \mathbb{R}^2$ un dominio regolare. Sia $F: \Omega \to \mathbb{R} ^2, D \subseteq \Omega, \Omega$ aperto, un campo vettoriale di classe $\mathcal{C}^1(\Omega)$, $F=(f,g)$ allora: \\
+    $$ \int_D \left( \frac{\partial f}{ \partial x} + \frac{\partial g}{ \partial y} \right) dx dy = \int_D \text{Div} F dx dy = \int_{\partial D^+} (f dy - g dx) = \int_{\partial D ^+} < F , \nu > ds $$
+    $$ \int_D \left( \frac{\partial g}{ \partial x} - \frac{\partial f}{ \partial y} \right) dx dy = \int_{\partial D^+} (f dx + g dy) = \int_{\partial D ^+} < F , \tau > ds $$
+
+    \subsection*{Def: Equazione del piano tangente}
+    Sia $s_0 \in \overset{\circ}{S} \left(\equiv \text{Im} \phi\left(\overset{\circ}{D}\right)\right)$. Allora S ha in $s_0$ un piano tangente che ha equazione:
+    $$ \text{det} \left[{ \mathbf{x}} - s_0 \, | \, \partial_u \phi (u_0, v_0) \, | \, \partial_v \phi (u_0, v_0) \right] = 0$$
+
+    \subsection*{Def: Integrale di superficie}
+    Data una superficie $\phi$ (non necessariamente orientabile) di sostegno S, sia $f: W \subseteq \mathbb{R}^3 \to \mathbb{R}$, con S $\subseteq W$, dico che f è integrabile (secondo Lebesgue) su S quando $f \circ \phi \, \lVert \mathbf{ \partial_u \phi \wedge \partial_v \phi} \rVert$ è Lebesgue integrabile in D. In tal caso si pone: 
+    $$\int_S f \, d \sigma = \int_D (f \circ \phi) (u,v) \, \lVert \mathbf{ \partial_u \phi \wedge \partial_v \phi} \rVert \, du dv $$
+
+    \subsection*{Thm: Teorema della divergenza (Gauss) in $\mathbb{R}^3$}
+    Sia T un dominio regolare e sia $\mathbf{F}=(F_1, F_2, F_3)$ un campo vettoriale di classe $\mathcal{C}^1(\Omega)$, con $\Omega$ aperto, $T \subseteq \Omega$, allora:
+    $$\int_T Div \mathbf{F} \,\, dx \, dy \, dz = \int_{\partial T^+} <\mathbf{F}, \mathbf{\nu}> \, d\sigma$$
+    Dove $ Div \mathbf{F} = \frac{\partial F_1}{\partial x} + \frac{\partial F_2}{\partial y} + \frac{\partial F_3}{\partial z}$ e $\nu = \frac{ \mathbf{ \partial_u \phi \wedge \partial_v \phi}}{\lVert \mathbf{ \partial_u \phi \wedge \partial_v \phi} \rVert}$
+
+    \subsection*{Thm: Teorema di Stokes in $\mathbb{R}^3$}
+    Sia $\phi:D \subseteq \mathbb{R}^2 \to \mathbb{R}^3$ una superficie regolare con bordo, con D dominio regolare, di sostegno S. Sia $\mathbf{F}$ un campo vettoriale di classe $\mathcal{C}^1(W)$ con W un aperto di $\mathbb{R}^3, S \subseteq W$. Allora:
+    $$\int_S < \text{rot}F, \nu> \, d \sigma = \int_{\partial S^+} < \mathbf{F} , \tau > \, ds$$
+    Dove rot$\mathbf{F}$:
+    $$\begin{bmatrix}
+        i & \partial x & F_1\\
+        j & \partial y & F_2 \\
+        k & \partial z & F_3 \\
+    \end{bmatrix}$$
+
+
+\end{document}
