@@ -4,7 +4,8 @@
 \usepackage[english]{babel}
 
 \usepackage{ragged2e}
-\usepackage[left=25mm, right=25mm, top=15mm]{geometry}
+%\usepackage[left=25mm, right=25mm, top=15mm]{geometry}
+\usepackage[left=0.2cm,top=0.2cm,right=0.5cm,bottom=0.2cm,bindingoffset=0.5cm]{geometry}
 \geometry{a4paper}
 \usepackage{graphicx}
 \usepackage{booktabs}
@@ -64,9 +65,9 @@
 
 \DeclareCaptionLabelFormat{andtable}{#1~#2  \&  \tablename~\thetable}
 \title{%
-    \Huge Formulario \\
-    \Large Analisi Matematica 3}
-\author{Lucrezia Bioni} % autore del documento
+    \Large Formulario \\
+    \large Analisi Matematica 3}
+\author{ \small Lucrezia Bioni} % autore del documento
 \date{} % data: se è vuoto non mette nulla :)
 
 \begin{document} % inizia il documento
@@ -78,13 +79,11 @@
     Siano $a<b, \, c<d \, \in \mathbb{R}$ e sia $f: \, [a,b] \times [c,d] \to \mathbb{R}$ continua. Supponiamo che: \\
     $1.$ $\forall x \in [a,b]$, $\lim_{y \to c^+} f(x,y)$ e $\lim_{y \to d^-} f(x,y)$ hanno segni discordi \\
     $2.$ $\forall (x,y) \in (a,b) \times (c,d)$, $\partial_yf(x,y)$ esiste e ha segno strettamente definito \\
-    Allora esiste un'unica funzione $g:(a,b) \to (c,d)$ tale che $f(x , g(x))=0$ per ogni $x \in (a,b)$
-
-
+    Allora esiste un'unica funzione $g:(a,b) \to (c,d)$ tale che $f(x , g(x))=0$ per ogni $x \in (a,b)$ 
     \subsubsection*{Teorema di Dini, $\exists !$ e regolarità locale}
     Sia U un aperto di $\mathbb{R}^2$ e sia $f:U \to \mathbb{R}$ di classe $\mathcal{C}^1\left(U\right)$. Sia $(x_0,y_0)\in U$ e supponiamo che: \\
     $1.$ $f(x_0,y_0)=0$ \\
-    $2.$ $\partial_y f(x_0,y_0) \neq 0$
+    $2.$ $\partial_y f(x_0,y_0) \neq 0$ \\
     Allora esistono un intorno aperto $V$ di $x_0$, un intorno aperto $W$ di $y_0$ con $V x W \subset U$, ed esiste un'unica funzione $g: V \to W$ tale che: \\
     $1.$ $g(x_0)=y_0$, \\
     $2.$ $f(x,g(x))=0$ per ogni $x \in V$ \\
@@ -100,13 +99,70 @@
     Inoltre $g \in \mathcal{C}^1(V)$ e la sua matrice jacobiana soddisfa in $V$ l'identità \\
     $(Jg)|_x = -(J_yf)^{-1}(J_xf)|_{x,g(x)}$ 
 
+    \subsubsection*{Simmetrie}
+    Solo la parità di $F$ ci dà informazioni sulla simmmetria di $f$: \\
+    - se $F(x,y)=F(-x,y)$, allora $f(x)=f(-x)$ (pari)  \\
+    - se $F(x,y)=F(-x,-y)$, allora $f(x)=-f(-x)$ (dispari)
+
+
+    \section{Curve}
     \subsection{Definizioni}
-    \subsubsection*{Retta tangente all'implicita}
-    Sia $y=f(x)$ definita implicitamente. Per trovare il piano tangente in $(x_0,y_0)$:
-    $f'(x)=-\frac{\partial_x F}{\partial_y F}$ \\
-    $0 = \partial{xx}F + 2 \partial_{xy} F f' + \partial_{yy} F  (f')^2 + \partial_y F f''$
-    \subsubsection*{Piano tangente all'implicita 2D}
-    Sia $z=f(x,y)$ definita implicitamente. 
+    \subsubsection*{Curva parametrizzata in parametro d'arco}
+    Data una curva $\varphi$ regolare, $\varphi$ è detta curva parametrizzata in parametro d'arco
+    quando $ \| \varphi  '(t) \| = 1 \ \ \ \ \ \forall t $
+
+    \subsubsection*{Lunghezza della curva}
+    Data una curva $\varphi:[a,b]\to \mathbb{R} ^n $ di classe $ \mathcal{C} ^1([a,b]) $ chiamo 
+    lunghezza di $\varphi$ il numero 
+    $$ \mathcal{L} _\varphi := \int_{a}^{b} \| \varphi  '(t) \| \, dt  $$
+
+    \subsubsection*{Integrale curvilineo}
+    Sia $\phi:[a,b]\to \mathbb{R}^n$ una curva regolare. \\
+    Sia $f: \Omega \subset \mathbb{R}^n \to \mathbb{R}, \Omega$ aperto, $f$ continua \\
+    Dove $\phi([a,b]) \subseteq \Omega$ \\
+    Chiamiamo integrale di f lungo la curva $\phi$ la quantità \\
+    $$\int_{a}^{b} f(\phi(t)) \lVert \phi'(t) \rVert dt = \int_{\text{sost.}\phi} f ds $$ 
+
+    \subsubsection*{Baricentro di una curva}
+    Il baricentro din una curva $\phi$ si determina ponendo:
+    $$x_B= \frac{1}{\mathcal{L}(\phi)} \int_{\phi} x ds \,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\, y_B= \frac{1}{\mathcal{L}(\phi)} \int_{\phi} y ds$$
+
+    \subsection{Triedro fondamentale (di Frenet/moving frame)}
+    Data una curva $\varphi:[a,b] \to \mathbb{R} ^3$ , $\varphi \in \mathcal{C} ^2 $ regolare \\
+    $\mathbf{Parametro \, d'arco}$ \\
+    Riparametrizzo per lunghezza d'arco (= arclength o lunghezza curvilinea): \\ Trovo $s(t) = \int_{0}^{t} \left| \varphi'(t) \right| \,dt $. \\ Trovo $t(s)$ invertendo la relazione precedente e ottengo $\tilde{\varphi}(s) = \varphi( t(s) )$. \\
+    $\mathbf{\bullet Versore \, tangente}$
+    Approssima la curva al primo ordine. \\
+    Parametro d'arco $s$: $T(s)=\frac{d\tilde{\varphi}}{ds} $ ; 
+    Generico parametro $t$: $T(t) = \frac{d\varphi}{dt} \frac{dt}{ds}$ \\
+   $\mathbf{\bullet Versore \, normale}$
+   Parametro d'arco $s$: $T(s)=\frac{ \frac{dT}{ds}}{ \left| \frac{dT}{ds} \right|}$ ; 
+   Generico parametro $t$: $T(t)=\frac{ \frac{dT}{dt}}{ \left| \frac{dT}{dt} \right|}$ \\
+   $ \mathbf{\bullet Versore \, binormale}$
+    $ B(s) = T \times N $
+
+    \subsubsection*{Formule di Frenet-Serret}
+    La base ortonormale ($T, N, B$) soddisfa il seguente sistema di ODE:
+    \begin{equation}
+        \begin{cases}
+            \frac{dT}{ds} = k N \\
+            \frac{dN}{ds} = -kT + \tau B \\
+            \frac{dB}{ds} = - \tau N
+        \end{cases}\,
+    \end{equation}
+    Dove \\ \textbf{Curvatura della curva} $k = \left| \frac{dT}{ds} \right| $ \\ \textbf{Torsione della curva} $ \tau = - \langle \frac{dB}{ds} , N \rangle , | \tau | = | \frac{dB}{ds} |  $
+
+
+    \section{Ottimizzazione}
+    \subsection*{Ottimizzazione vincolata}
+    \subsubsection*{Teorema dei moltiplicatori di Lagrange}
+    Sia $f:\Omega \subseteq \mathbb{R} ^n \to \mathbb{R}$, $\Omega$ aperto, $f \in \mathcal{C} ^1 (\Omega)$. \\ Sia $D \subseteq \Omega$ l'insieme degli zeri di una mappa $F: \Omega \to \mathbb{R} ^m \, (m<n), F \in \mathcal{C} ^1$. \\ Supponiamo che $x_0 \in D$ sia un estremo locale per f ristretto a D. \\ Supponiamo che $J_F(x_0)$ abbia rango massimo (ovvero di rango m). \\
+    Allora $\exists$ $\lambda_1,...,\lambda_m \in \mathbb{R}$ t.c. $\nabla f(x_0) = \lambda_1 \nabla F_1(x_0) + ... + \lambda_m \nabla F_m(x_0)$, dove $F=(F_1, ... , F_m)$. \\ \\ 
+    Ovvero: se $P=(x,y,x) \in \partial \Omega$ è un estremo (locale) per $f|_{\partial \Omega}$, allora $ \nabla f(x,y,z)$ è parallelo al versore normale di $\partial \Omega$ in $P$, essendo $\partial \Omega$ vincolo regolare. 
+
+    \subsubsection*{Condizione di rango massimo}
+    Il rango di una matrice $2 \times 3$ non è $2$ nei punti in cui tutti e 3 i minori di ordine 2 si annullano.
+    
 
     \section{Forme differenziali}
     \subsection{Teoremi e definizioni}
@@ -143,7 +199,9 @@
     \subsubsection*{Lemma di Poincaré}
     Sia $\omega$ una forma differenziale di classe $\mathcal{C}^1$ su $\Omega$ aperto di $\mathbb{R}^n$. \\
     Se $\Omega$ è stellato e $\omega$ è chiusa in $\Omega$ $\implies$ $\omega$ è esatto in $\Omega$.\\
-    Valido anche nel caso in cui $\Omega$ sia semplicemente connesso.
+    $\bullet$ Valido anche nel caso in cui $\Omega$ sia semplicemente connesso. \\
+    $\bullet$ Se $\Omega$ è stellato, allora $\Omega$ è semplicemente connesso. \\
+    $\bullet$ Se $\Omega$ è $\mathbb{R}^3\backslash \{\mathbf{0}\}$, allora $\Omega$ è semplicemente connesso, ma non è stellato.
 
     \subsubsection*{Omotopia}
     Siano $\phi_0, \phi_1:[0,1] \to \Omega \subseteq \mathbb{R}^n$. \\ Supponiamo che $\phi_0$ e $\phi_1$ siano curve con $\phi_0(0)=\phi_1(0)$ e $\phi_0(1)=\phi_1(1)$. \\ Le due curve $\phi_0$ e $\phi_1$ sono dette omotope quando esiste una mappa (mappa di omotopia) $\psi:[o,1] \times [0,1] \to \Omega$ continua globalmente e tale che: \\
@@ -156,15 +214,16 @@
     Siano $\phi_0$ e $\phi_1$ curve regolari a tratti da p a q in $\Omega$. \\
     Se $\phi_0$ e $\phi_1$ sono omotope $\implies$ $\int_{\phi_0} \omega = \int_{\phi_1} \omega$
 
-    \section{Ottimizzazione}
-    \subsection*{Ottimizzazione vincolata}
-    \subsubsection*{Teorema dei moltiplicatori di Lagrange}
-    Sia $f:\Omega \subseteq \mathbb{R} ^n \to \mathbb{R}$, $\Omega$ aperto, $f \in \mathcal{C} ^1 (\Omega)$. \\ Sia $D \subseteq \Omega$ l'insieme degli zeri di una mappa $F: \Omega \to \mathbb{R} ^m \, (m<n), F \in \mathcal{C} ^1$. \\ Supponiamo che $x_0 \in D$ sia un estremo locale per f ristretto a D. \\ Supponiamo che $J_f{x_0}$ abbia rango massimo (ovvero di rango m). \\
-    Allora $\exists$ $\lambda_1,...,\lambda_m \in \mathbb{R}$ t.c. $\nabla f(x_0) = \lambda_1 \nabla F_1(x_0) + ... + \lambda_m \nabla F_m(x_0)$, dove $F=(F_1, ... , F_m)$.
+    \subsection{Osservazioni}
+    \subsubsection*{Vortice}
+    Tale forma è chiusa, ma non è esatta nel suo insieme di definzione $\mathbb{R}^2 \backslash \{\mathbf{0}\}$:
+    $$\omega = \frac{y}{x^2+y^2} dx - \frac{x}{x^2 + y^2}dy$$
+    
+
 
 
     \section{Integrazione secondo Lebesgue}
-    \section{Teoremi}
+    \subsection{Teoremi}
     \subsubsection*{Funzione misurabile}
     Sia $f:\mathbb{R} ^n \to \mathbb{R} $, f continua $\implies$ $f$ è misurabile  
 
@@ -177,30 +236,37 @@
     $\bullet$ \, $f \in \mathcal{R} (I), I=[a,b] \implies f \in L(I)$ \\
     $\bullet$ \, $f: I \to \mathbb{R}$, con I intervallo (non necessariamente compatto). Supponiamo che $f$ sia assolutamente integrabile secondo Riemann generalizzato in I $\implies f \in L(I)$
 
+    \subsubsection*{Teorema di Lebesgue - Vitali}
+    Sia f una funzione limitata, non negativa e nulla fuori da un limitato. Le seguenti condizioni sono equivalenti: \\
+    $(a)$ f è integrabile secondo Riemann su $\mathbb{R}$. \\
+    $(b)$ L'insieme dei punti di discontinuità di f ha misura nulla secondo Lebesgue. \\
+    $(c)$ Se una (e quindi entrambe) delle condizioni sopra vale, allora f è misurabile, integrabile secondo Lebesgue e i due integrali, secondo Riemann e secondo Lebesgue, coincidono.
+
+
     \subsubsection*{Teorema di convergenza uniforme}
     Sia $E \in \mathcal{M}(\mathbb{R}^n)$, con $m(E) < + \infty$. \\ Se $\{f_k\}_{k \in \mathbb{N}}: E \to \mathbb{R}, f_k \in L(E)$, $f:E \to \mathbb{R}$, e $f_k \to f$ uniformemente in E \\
     Allora $f \in L(E)$ e, inoltre, $\lim_{k \to \infty} \int_E \left| f_k(x) - f(x) \right|dx=0$, così che $\lim_{k \to \infty} \int_E f_k$ esiste e vale $\int_E f$
 
 
-    \subsection*{Teorema di convergenza monotona}
+    \subsubsection*{Teorema di convergenza monotona}
     Sia $ \{ f_k \}_{k\in\mathbb{N}}: E \to \overline{\mathbb{R}}, \,\,\, f: E \to \overline{\mathbb{R}}, \,\,\, E \in \mathcal{M} (\mathbb{R} ^n) , \,\,\, f_k \text{ e } f \in \mathfrak{M}(\mathbb{R} ^n) $. \\ Supponiamo che $\exists \, g: E \to \overline{\mathbb{R}}, \,\,\,\,\, g \in \mathcal{L} (E) $, \,\,\,\, con $g(x)\leq f_k(x) \, \,\,\, \forall x \in E \, \,\,\,\, \forall k \in \mathbb{N} $. \\ Supponiamo poi che $\forall x \in E$ $f_k(x)\nearrow f(x)$ (convergenza monotona puntuale) \\
     $ \implies f_k \, \, \forall k \,\,\, \text{e} \, f \,\,\, \text{hanno integrale} \,\,\,\, \text{e} \,\,\,\, \lim_{k \to \infty} \int_{E}^{}f_k \,dx = \int_{E}^{}f(x) \,dx $
 
-    \subsection*{Lemma di Fatou}
+    \subsubsection*{Lemma di Fatou}
     Sia $ \ f_k: E \subseteq \mathcal{M} (\mathbb{R} ^n) \to \overline{\mathbb{R}} , \,\,\,\, f_k \in \mathfrak{M} (E) \,\, \forall k$. \\ 1. Supponiamo che $\exists \, g \in \mathcal{L} (E) \,\, , g(x) \leq f_k(x) \,\, \forall x $
     $ \implies \int_{E}^{}   \lim_{k \to \infty} \text{inf }f_k \,dx  \leq  \lim_{k \to \infty} \text{inf }\int_{E}^{}f_k$ \\
     2. Supponiamo che $\exists \, G \in \mathcal{L} (E) \,\, , f_k(x) \leq G(x) \,\, \forall x $
     $ \implies \int_{E}^{}   \lim_{k \to \infty} \text{sup }f_k \,dx  \geq  \lim_{k \to \infty} \text{sup} \int_{E}^{}f_k$
   
 
-    \subsection*{Teorema di convergenza dominata}
+    \subsubsection*{Teorema di convergenza dominata}
     Sia $ \ f_k: E \subseteq \mathcal{M} (\mathbb{R} ^n) \to \overline{\mathbb{R}} , \,\,\,\, f_k \in \mathfrak{M} (E) \,\, \forall k$. Supponiamo che \\ 1. $\exists \, f: E \to \overline{\mathbb{R}} $, con $\lim_{k \to \infty} f_k(x) $ $= f(x)$ $\forall x \in E$ \\ 2. $\exists \, g: E \to \overline{\mathbb{R}} $, $g \in \mathcal{L} (E)$ \,\, con $|f_k(x)| \leq g(x) \,\,\,\,\, \forall x \in E \,\,\,\,\,\, \forall k$
     $ \implies \lim_{k \to \infty} \int_{E}^{}f_k \,dx = \int_{E}^{}f(x) \,dx $
   
 
     \section{Integrazione multidimensionale}
 
-    \section{Teoremi e definizioni}
+    \subsection{Teoremi per integrali iterati}
     
     \subsubsection*{Teorema di Fubini}
     Sia $f:E \subseteq \mathbb{R}^n \to \mathbb{R}$, $E \in \mathcal{M}(\mathbb{R}^n), f \in L(E)$. Sia $\mathbb{R}^m \times \mathbb{R}^k = \mathbb{R}^n$ una decomposizione ortogonale. Allora: \\
@@ -218,7 +284,20 @@
     \subsubsection*{Teorema per il cambiamento di coordinate}
     Sia $\Phi:\Omega \subseteq \mathbb{R}^n \to \tilde{\Omega} $, con $\Omega$ e $\tilde{\Omega}$ aperti, un cambiamento di coordinate (dunque un diffeomorfismo). Sia $E \subseteq \tilde{\Omega}$, $E \in \mathcal{M}(\mathbb{R})$ $\implies \Phi^{-1}(E) \in \mathcal{M}(\mathbb{R}^n)$.\\
     Sia $f:E \to \mathbb{R}, f \in L(E)$ oppure $f:E \to [0,+\infty]$ e misurabile. Allora:
-    $$\int_{\Phi^{-1}(E)}f(\Phi (x)) \left| \text{det} J \Phi (x) \right| dx = \int_E f(y) dy$$
+    $$\int_{\Phi^{-1}(E)}f(\Phi (x)) \left| \text{det} J \Phi (x) \right| dx = \int_E f(y) dy$$ \\
+    Esempi notevoli: \\
+    $\bullet$ Coordinate cilindriche: $\Phi: (0, +\infty) \times (0,2 \pi) \times \mathbb{R} \longmapsto \mathbb{R}^3 \backslash \{(x,0,z): x \geq 0 \}$, con $(\rho, \theta, z)\longmapsto \Phi(\rho, \theta, z)=(\rho \cos \theta , \rho \sin \theta , z)$, $| \det J \phi = \rho^2 |$ \\
+    $\bullet$ Coordinate sferiche: $\Phi: (0, +\infty) \times (0,2 \pi) \times (0, \pi) \longmapsto \mathbb{R}^3 \backslash (\{x \geq 0, y=0 \} \bigcup \{0,0,z\} )$, con $(\rho, \phi, \theta)\longmapsto \Phi(\rho, \phi, \theta)=(\rho \sin \phi \cos \theta , \rho \sin \phi \sin \theta , \rho \cos \theta )$, $| \det J \phi = \rho^2 \sin \phi |$
+
+    \subsection{Teoremi e definizioni in $\mathbb{R}^2$}
+
+    \subsubsection*{Dominio normale (e regolare) in x (analogo in y)}
+    Sia $D \subseteq \mathbb{R}^2$. $D$ è detto dominio normale in $x$ quando $\exists \alpha, \beta : [a,b] \to \mathbb{R}$ t.c. \\ $D = \{ (x,y) \in \mathbb{R}^2, x \in [a,b], \alpha(x) \leq y \leq \beta(x) \}$. \\
+    Se $\alpha$ e $\beta$ $\in \mathcal{C}^1$, è detto dominio nromale regolare in $x$.
+
+    \subsubsection*{Dominio regolare}
+    Sia $D \subseteq \mathbb{R}^2$. $D$ è detto dominio regolare quando $\exists \, D_1, \dots , D_N$ domini normali regolari, con $\overset{\circ}{D}_i \cap \overset{\circ}{D}_j = \emptyset \, \, \forall \, i,j$ e $ D = \bigcup_{i=1}^{N} D_i$. \\
+    Dato un dominio regolare, posso sempre definire, sul bordo di di $D$, versori tangenti $\tau$ e normali $\nu$: $\nu$ è sempre uscente e $\tau$ è definito in modo che la coppia $\nu, \tau$ sia equiversa alla coppia $e_1, e_2$. 
 
     \subsubsection*{Formule di Green}
     Sia D un dominio regolare in $\mathbb{R}^2$. Sia $f: \Omega \subseteq \mathbb{R}^2 \to \mathbb{R}, D \subseteq \Omega, \Omega$ aperto, $f \in \mathcal{C}^1(\Omega)$, allora: \\
@@ -230,45 +309,71 @@
     $$ \int_D \left( \frac{\partial f}{ \partial x} + \frac{\partial g}{ \partial y} \right) dx dy = \int_D \text{Div} F dx dy = \int_{\partial D^+} (f dy - g dx) = \int_{\partial D ^+} < F , \nu > ds $$
     $$ \int_D \left( \frac{\partial g}{ \partial x} - \frac{\partial f}{ \partial y} \right) dx dy = \int_{\partial D^+} (f dx + g dy) = \int_{\partial D ^+} < F , \tau > ds $$
 
+    \subsection{Teoremi e definizioni in $\mathbb{R}^3$}
+
+    \subsubsection*{Superficie regolare in $\mathbb{R}^3$}
+    Sia $D \subseteq \mathbb{R}^2$ un dominio connesso (ovvero $D$ è la chiusura di un aperto connesso). Una superficie parametrizzata regolare è una mappa $\phi: D \to \mathbb{R}^3$, con $\phi \in \mathcal{C}^1 (\Omega)$, dove $\Omega$ è un aperto, $D \subseteq \Omega$, tale che: \\
+    $(a)$ $\phi$ ristretta a $\overset{\circ}{D}$ è iniettiva \\
+    $(b)$ $J \phi = \left[ \partial_u \phi | \partial_v \phi \right]$ ha rango 2 in $\overset{\circ}{D}$. \\
+    Chiamo poi sostegno $S$ di $\phi$ l'insieme $S \coloneqq Im \phi(D)$. \\ \\
+    $\bf{Osservazione}$: gli oggetti che appaiono come grafici di funzioni sono tutti superfici regolari: \\
+    Sia $D$ dominio connesso in $\mathbb{R}^2$, $f: D \to  \mathbb{R}, f \in \mathcal{C}^1 (\Omega), \Omega$ aperto, $D \subseteq \Omega$, $\phi: D \to \mathbb{R}^3$, con $\phi(u,v) \coloneqq ( u, v , f(u,v))$, è una mappa di parametrizzazione regolare della superficie $\Gamma_f$.
+
     \subsubsection*{Equazione del piano tangente}
     Sia $s_0 \in \overset{\circ}{S} \left(\equiv \text{Im} \phi\left(\overset{\circ}{D}\right)\right)$. Allora S ha in $s_0$ un piano tangente che ha equazione:
     $$ \text{det} \left[{ \mathbf{x}} - s_0 \, | \, \partial_u \phi (u_0, v_0) \, | \, \partial_v \phi (u_0, v_0) \right] = 0$$
+
+    \subsubsection*{Superficie orientabile}
+    La superficie è detta orientabile quando il versore normale può esere esteso per continuità a tutti i punti di $\overset{\circ}{S}$.
 
     \subsubsection*{Integrale di superficie}
     Data una superficie $\phi$ (non necessariamente orientabile) di sostegno S, sia $f: W \subseteq \mathbb{R}^3 \to \mathbb{R}$, con S $\subseteq W$, dico che f è integrabile (secondo Lebesgue) su S quando $f \circ \phi \, \lVert \mathbf{ \partial_u \phi \wedge \partial_v \phi} \rVert$ è Lebesgue integrabile in D. In tal caso si pone: 
     $$\int_S f \, d \sigma = \int_D (f \circ \phi) (u,v) \, \lVert \mathbf{ \partial_u \phi \wedge \partial_v \phi} \rVert \, du dv $$
 
+    \subsubsection*{Dominio regolare di $\mathbb{R}^3$}
+    Una regione $T \subseteq \mathbb{R}^3$ è detta dominio regolare di $\mathbb{R}^3$ quando è unione finita di domini regolari a interni disgiunti, dove un domimio normale regolare è un insieme di $\mathbb{R}^3$ che può essere descritto come: \\
+    ${(x,y,z) \in \mathbb{R}^3 : (x,y) \in D \, \text{e} \, \alpha(x,y) \leq z \leq \beta(x,y)}$ con $D$ dominio regolare di $\mathbb{R}^2$ e $\alpha, \beta: D \to \mathbb{R}$ di classe $\mathcal{C}^1$. 
+
     \subsubsection*{Teorema della divergenza (Gauss) in $\mathbb{R}^3$}
     Sia T un dominio regolare e sia $\mathbf{F}=(F_1, F_2, F_3)$ un campo vettoriale di classe $\mathcal{C}^1(\Omega)$, con $\Omega$ aperto, $T \subseteq \Omega$, allora:
     $$\int_T Div \mathbf{F} \,\, dx \, dy \, dz = \int_{\partial T^+} <\mathbf{F}, \mathbf{\nu}> \, d\sigma$$
-    Dove $ Div \mathbf{F} = \frac{\partial F_1}{\partial x} + \frac{\partial F_2}{\partial y} + \frac{\partial F_3}{\partial z}$ e $\nu = \frac{ \mathbf{ \partial_u \phi \wedge \partial_v \phi}}{\lVert \mathbf{ \partial_u \phi \wedge \partial_v \phi} \rVert}$
+    Dove $ Div \mathbf{F} = \frac{\partial F_1}{\partial x} + \frac{\partial F_2}{\partial y} + \frac{\partial F_3}{\partial z}$ e $\nu = \frac{ \mathbf{ \partial_u \phi \wedge \partial_v \phi}}{\lVert \mathbf{ \partial_u \phi \wedge \partial_v \phi} \rVert}$.
+
+    \subsubsection*{Superficie regolare con bordo}
+    Una superficie regolare con bordo è una mappa $\phi:D \to \mathbb{R}^3$ con D un dominio connesso di $mathbb{R}^2$ e $\phi \in \mathcal{C}^1 (\Omega)$, con $\Omega$ aperto di $\mathbb{R}^2$, $D \subseteq \Omega$ tale che: \\
+    $(a)$ $\phi$ è iniettiva su $D$ \\
+    $(b)$ $J \phi = \left[ \partial_u \phi | \partial_v \phi \right]$ ha rango 2 in $D$ \\
+    Ci sono 2 possibili orientazioni per la superficie e 2 per il suo bordo (curva): oriento il sostegno $S$ e $\partial S$ in modo compatibile (regola della mano destra).
 
     \subsubsection*{Teorema di Stokes in $\mathbb{R}^3$}
     Sia $\phi:D \subseteq \mathbb{R}^2 \to \mathbb{R}^3$ una superficie regolare con bordo, con D dominio regolare, di sostegno S. Sia $\mathbf{F}$ un campo vettoriale di classe $\mathcal{C}^1(W)$ con W un aperto di $\mathbb{R}^3, S \subseteq W$. Allora:
-    $$\int_S < \text{rot}F, \nu> \, d \sigma = \int_{\partial S^+} < \mathbf{F} , \tau > \, ds$$
-    Dove rot$\mathbf{F}$:
-    $$\begin{bmatrix}
+    $$\int_S < \text{rot} \mathbf{F}, \nu> \, d \sigma = \int_{\partial S^+} < \mathbf{F} , \tau > \, ds \,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\, \text{dove} \,\,\, \text{rot}(\mathbf{F}) = \begin{bmatrix}
         i & \partial x & F_1\\
         j & \partial y & F_2 \\
         k & \partial z & F_3 \\
     \end{bmatrix}$$
 
     \subsection{Domini notevoli in $\mathbb{R}^3$}
-    \subsubsection*{Paraboloide}
+    $\mathbf{Paraboloide}$ \\
     $z = z_0 + x^2 + y^2$ - Paraboloide con vertice in $(0,0,z_0)$ e aperto verso + \\
     $y = y_0 + x^2 + z^2$ - Paraboloide su asse y \\
     $x = x_0 + y^2 + z^2$ - Paraboloide su asse x \\
-    Se è della forma $z=-(x^2 + y^2)$ è ribaltato.
-    \subsubsection*{Sfera}
-    $(x-x_0)^2+(y-y_0)^2+(z-z^0)^2=r^2$ - Sfera di raggio r e centro $(x_0,y_0,z_0)$
-    \subsubsection*{Cono}
-    $z = \sqrt{x^2+y^2}$ - Cono standard \\
-    $z = z_0 \pm \sqrt{x^2+y^2}$ - Cono di vertice $(0,0,z_0)$. Se segno - è ribaltato.
-    \subsubsection*{Cilindro}
-    $x^2+y^2=c^2$ - Cilindro di raggio c.
-    \subsubsection*{Iperboloide}
-    $z^2-(x^2+y^2)=c^2$ - Iperboloide di vertice c.
-    \subsubsection*{Sfera parziale}
-    $z= a \pm \sqrt{b-x^2-y^2}$ - Porzione della sfera ridotta a un intorno del polo N/S
+    Se è della forma $z=-(x^2 + y^2)$ è ribaltato. \\
+    $\mathbf{Sfera}$ \\
+    $(x-x_0)^2+(y-y_0)^2+(z-z^0)^2=r^2$ - Sfera di raggio r e centro $(x_0,y_0,z_0)$ \\
+    $\mathbf{Cono}$ \\
+    $z = \sqrt{x^2+y^2}$ - Cono standard (semicono)\\
+    $z = z_0 \pm \sqrt{x^2+y^2}$ - Cono di vertice $(0,0,z_0)$. Se segno - è ribaltato. \\
+    $\mathbf{Cilindro}$ \\
+    $x^2+y^2=c^2$ - Cilindro di raggio c. \\
+    $\mathbf{Iperboloide}$ \\
+    $z^2-(x^2+y^2)=c^2$ - Iperboloide a una falda di vertice c. \\
+    $z^2-(x^2+y^2)= - c^2$ - Iperboloide a due falde di vertice c. \\
+    $\mathbf{Sfera \, parziale}$ \\
+    $z= a \pm \sqrt{b-x^2-y^2}$ - Porzione della sfera ridotta a un intorno del polo N/S. \\
+    $\mathbf{Ellissoide}$ \\
+    $\frac{x^2}{a^2}+\frac{y^2}{b^2}+\frac{z^2}{c^2}=1$ \\
+    $\mathbf{Paraboloide \, iperbolico}$ \\
+    $z = x^2 - y^2$ \\
 
 \end{document} % fine il documento: non necessario perché lo farà automaticamente
