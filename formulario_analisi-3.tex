@@ -84,7 +84,7 @@
     Sia U un aperto di $\mathbb{R}^2$ e sia $f:U \to \mathbb{R}$ di classe $\mathcal{C}^1\left(U\right)$. Sia $(x_0,y_0)\in U$ e supponiamo che: \\
     $1.$ $f(x_0,y_0)=0$ \\
     $2.$ $\partial_y f(x_0,y_0) \neq 0$ \\
-    Allora esistono un intorno aperto $V$ di $x_0$, un intorno aperto $W$ di $y_0$ con $V x W \subset U$, ed esiste un'unica funzione $g: V \to W$ tale che: \\
+    Allora esistono un intorno aperto $V$ di $x_0$, un intorno aperto $W$ di $y_0$ con $V \times W \subset U$, ed esiste un'unica funzione $g: V \to W$ tale che: \\
     $1.$ $g(x_0)=y_0$, \\
     $2.$ $f(x,g(x))=0$ per ogni $x \in V$ \\
     Inoltre $g \in \mathcal{C}^1(V)$ e la sua derivata soddisfa in $V$ l'identità $g'(x) = - \frac{\partial_x f}{\partial_y f}|_{x,g(x)}$ 
@@ -93,7 +93,7 @@
     Sia U aperto di $\mathbb{R}^{m+n}$ e sia $f:U \to \mathbb{R}^n$ di classe $\mathcal{C}^1\left(U\right)$. Sia $(x_0,y_0) \in U$ e supponiamo che: \\
     $1.$ $f(x_0,y_0)=0$ \\
     $2.$ det $J_{y}f(x_0,y_0) \neq 0$ \\
-    Allora esistono un intorno aperto $V \subset \mathbb{R}^m$ di $x_0$, un intorno aperto $W \subset \mathbb{R}^n$ di $y_0$ con $V x W \subset U$, ed esiste un'unica funzione $g: V \to W$ tale che: \\
+    Allora esistono un intorno aperto $V \subset \mathbb{R}^m$ di $x_0$, un intorno aperto $W \subset \mathbb{R}^n$ di $y_0$ con $V \times W \subset U$, ed esiste un'unica funzione $g: V \to W$ tale che: \\
     $1.$ $g(x_0)=y_0$, \\
     $2.$ $f(x,g(x))=0$ per ogni $x \in V$ \\
     Inoltre $g \in \mathcal{C}^1(V)$ e la sua matrice jacobiana soddisfa in $V$ l'identità \\
@@ -103,6 +103,11 @@
     Solo la parità di $F$ ci dà informazioni sulla simmmetria di $f$: \\
     - se $F(x,y)=F(-x,y)$, allora $f(x)=f(-x)$ (pari)  \\
     - se $F(x,y)=F(-x,-y)$, allora $f(x)=-f(-x)$ (dispari)
+
+    \subsubsection*{Sviluppo di Taylor}
+    Per derivata seconda: $F_{xx} + F_{xy} f' + f' [F_{xy} + F_{yy} f'] + F_y f'' = 0$ \\
+    Per derivata terza: $F_{xxx}+F_{xxy}f' + 2 f' [F_{xyx}+F_{xyy}f']+2F_{xy}f''+(f')^2[F_{yyx}+F_{yyy}f']+F_{yy}2 f' f'' + f''[F_{yx}+F_{yy}f']+F_yf'''=0$
+
 
 
     \section{Curve}
@@ -340,7 +345,7 @@
     Dove $ Div \mathbf{F} = \frac{\partial F_1}{\partial x} + \frac{\partial F_2}{\partial y} + \frac{\partial F_3}{\partial z}$ e $\nu = \frac{ \mathbf{ \partial_u \phi \wedge \partial_v \phi}}{\lVert \mathbf{ \partial_u \phi \wedge \partial_v \phi} \rVert}$.
 
     \subsubsection*{Superficie regolare con bordo}
-    Una superficie regolare con bordo è una mappa $\phi:D \to \mathbb{R}^3$ con D un dominio connesso di $mathbb{R}^2$ e $\phi \in \mathcal{C}^1 (\Omega)$, con $\Omega$ aperto di $\mathbb{R}^2$, $D \subseteq \Omega$ tale che: \\
+    Una superficie regolare con bordo è una mappa $\phi:D \to \mathbb{R}^3$ con D un dominio connesso di $\mathbb{R}^2$ e $\phi \in \mathcal{C}^1 (\Omega)$, con $\Omega$ aperto di $\mathbb{R}^2$, $D \subseteq \Omega$ tale che: \\
     $(a)$ $\phi$ è iniettiva su $D$ \\
     $(b)$ $J \phi = \left[ \partial_u \phi | \partial_v \phi \right]$ ha rango 2 in $D$ \\
     Ci sono 2 possibili orientazioni per la superficie e 2 per il suo bordo (curva): oriento il sostegno $S$ e $\partial S$ in modo compatibile (regola della mano destra).
@@ -351,6 +356,11 @@
         i & \partial x & F_1\\
         j & \partial y & F_2 \\
         k & \partial z & F_3 \\
+    \end{bmatrix}
+    =\begin{bmatrix}
+        \partial_y F_3 - \partial_z F_2\\
+        \partial_z F_1 - \partial_x F_3 \\
+        \partial_x F_2 - \partial_y F_1 \\
     \end{bmatrix}$$
 
     \subsection{Domini notevoli in $\mathbb{R}^3$}
